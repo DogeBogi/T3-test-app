@@ -16,7 +16,7 @@ export default function HomePage() {
   return (
     <main className="">
      <div className="flex flex-wrap gap-4">
-     {MOCKIMAGES.map((image) => (<div key={image.id} className="w-48"> 
+     {[...MOCKIMAGES,...MOCKIMAGES,...MOCKIMAGES].map((image) => (<div key={image.id} className="w-48"> 
         <img src={image.url} alt="image" />
      </div>))}
      </div>
