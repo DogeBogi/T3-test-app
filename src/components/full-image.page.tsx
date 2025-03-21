@@ -6,7 +6,13 @@ export default async function FullImagePage(props:{id:number}){
     throw new Error ('Image not found')
   };
   return (
-    
-    <img src={image.url} className="w-96" alt={image.name}/>
+    <div className="flex w-full h-full">
+        <div className="flex flex-shrink justify-center items-center">
+            <img src={image.url} className=" min-w-80 object-contain flex-shrink " alt={image.name}/>
+        </div>
+    <div className="w-48 flex  flex-shrink flex-col border-l">
+    <div className="text-xl font-bold">{image.name}</div>
+        </div>
+    </div>
     );
 }
