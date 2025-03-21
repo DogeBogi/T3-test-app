@@ -11,7 +11,9 @@ async function Images (){
     <div className="flex flex-row flex-wrap gap-4">
     {images.length === 0 && <h1 className="mr-auto ml-auto text-4xl ">Send your images</h1>}
     {images.map((image) => (<div key={image.id} className="w-48 h-48 flex flex-col"> 
+      <Link href={`/img/${image.id}`}>
       <Image src={image.url} alt={image.name} width={192} height={192} /> 
+      </Link>
       <div>
         {image.name}
       </div>
@@ -22,7 +24,7 @@ async function Images (){
 
 
 export default async function HomePage() {
-  
+    console.log(typeof window !== 'undefined')
   return (
     <main>
      <div className="flex flex-wrap gap-4 justify-center">
