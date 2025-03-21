@@ -7,7 +7,7 @@ import { createPortal } from 'react-dom';
 export function Modal({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const dialogRef = useRef<ElementRef<'dialog'>>(null);
-    const domElem = document.getElementById('modal-root')!;
+
   useEffect(() => {
     if (!dialogRef.current?.open) {
       dialogRef.current?.showModal();
@@ -18,14 +18,11 @@ export function Modal({ children }: { children: React.ReactNode }) {
     router.back();
   }
 
-  if(domElem){
-
-      return createPortal(
-          <div className="modal-backdrop">
-      <dialog ref={dialogRef} className="modal" onClose={onDismiss}>
+  return createPortal(
+      <dialog ref={dialogRef} className="w-screen h-screen bg-zinc-900/50" onClose={onDismiss}>
         {children}
         <button onClick={onDismiss} className="close-button" />
-      </dialog>
-    </div>,domElem);
-}
+      </dialog>,
+    document.getElementById('modal-root')!
+  );
 }

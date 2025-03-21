@@ -24,7 +24,6 @@ async function Images (){
 
 
 export default async function HomePage() {
-    console.log(typeof window !== 'undefined')
   return (
     <main>
      <div className="flex flex-wrap gap-4 justify-center">
