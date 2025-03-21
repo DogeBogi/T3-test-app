@@ -13,7 +13,7 @@ export default function TopNav(){
         <div>
             Gallery
         </div>
-      <div className='flex flex-row'>
+      <div className='flex flex-row gap-4 items-center'>
         <SignedOut>
         <SignInButton/>
         </SignedOut>
