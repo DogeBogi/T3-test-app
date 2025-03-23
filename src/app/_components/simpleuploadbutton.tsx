@@ -108,6 +108,11 @@ const CorrectAnswerMarker = () => {
 
 export default function SimpleUploadButton(){
   const {inputProps} = useUploadThingInputProps("imageUploader",{
+    onUploadError(){
+      toast.dismiss("upload-begin")
+      toast('Upload error')
+      router.refresh();
+    },
     onUploadBegin(){
       toast(<div className="flex items-center gap-2 text-white">
         <LoadingSpinnerSVG /> <span className="text-lg">Uploading...</span>
