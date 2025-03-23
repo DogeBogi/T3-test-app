@@ -8,6 +8,7 @@ import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
 import { Toaster } from "sonner";
+import { PostHogProvider } from "./_analytics/providers";
 
 export const metadata: Metadata = {
   title: "This is my gallery app",
@@ -22,6 +23,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode, modal :React.ReactNode}>) {
   return (
     <ClerkProvider>
+        <PostHogProvider>
     <html lang="en" className={`${GeistSans.variable}`}>
       <body className={`dark`}>
     <NextSSRPlugin
@@ -32,7 +34,7 @@ export default function RootLayout({
            * as if you were to fetch `/api/uploadthing` directly.
           */
          routerConfig={extractRouterConfig(ourFileRouter)}
-        />
+         />
         <div className="h-screen grid grid-rows-[auto,1fr] ">
         <TopNav/>
         <main className="overflow-y-scroll">
@@ -44,6 +46,7 @@ export default function RootLayout({
         <Toaster theme="dark"/>
         </body>
     </html>
+    </PostHogProvider>
     </ClerkProvider>
   );
 }
