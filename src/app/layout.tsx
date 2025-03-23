@@ -7,6 +7,7 @@ import {ClerkProvider,} from '@clerk/nextjs'
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "This is my gallery app",
@@ -22,8 +23,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body className={``}>
-      
+      <body className={`dark`}>
     <NextSSRPlugin
           /**
            * The `extractRouterConfig` will extract **only** the route configs
@@ -41,6 +41,7 @@ export default function RootLayout({
         </div>
         {modal}
         <div id="modal-root"/>
+        <Toaster theme="dark"/>
         </body>
     </html>
     </ClerkProvider>

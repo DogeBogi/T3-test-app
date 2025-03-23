@@ -3,6 +3,7 @@
 import { UploadButton } from '~/utils/uploadthing'
 import { useRouter } from 'next/navigation'
 import { useUploadThing } from "~/utils/uploadthing";
+import { toast } from "sonner"
 
 // inferred input off useUploadThing
 type Input = Parameters<typeof useUploadThing>;
@@ -41,8 +42,15 @@ function UploadSVG(){
 
 export default function SimpleUploadButton(){
   const {inputProps} = useUploadThingInputProps("imageUploader",{
+    onUploadBegin(){
+      toast("Uploading...", {
+        id: "upload-begin"
+      })
+    },
     onClientUploadComplete(){ 
-      router.refresh()
+      router.refresh();
+      toast.dismiss("upload-begin")
+      toast("Success Upload")
     }
   })
   const router = useRouter()
