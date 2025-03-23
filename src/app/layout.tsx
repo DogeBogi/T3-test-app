@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body className="">
+      <body className={``}>
       
     <NextSSRPlugin
           /**
