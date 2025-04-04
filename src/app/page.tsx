@@ -9,12 +9,14 @@ async function Images (){
   const images = await getMyImages();
   return (
     <div className="flex flex-row flex-wrap gap-4 p-4">
-    {images.length === 0 && <h1 className="mr-auto ml-auto text-4xl ">Send your images</h1>}
-    {images.map((image) => (<div key={image.id} className="w-48 h-48 flex flex-col mb-2"> 
-      <Link href={`/img/${image.id}`}>
-      <Image src={image.url} alt={image.name} width={192} height={192} /> 
+    {images.length === 0 && <h1 className="mr-auto ml-auto text-4xl  ">Send your images</h1>}
+    {images.map((image) => (<div key={image.id} className="w-48 h-56 flex flex-col mb-2 items-center  text-center  "> 
+      <Link href={`/img/${image.id}`} >
+      <div className="w-48 h-48 bg-white rounded overflow-hidden shadow-md">
+      <Image src={image.url} alt={image.name} width={192} height={192} className="w-full h-full object-cover"/> 
+      </div>
       </Link>
-      <div className="">
+      <div className="w-48 max-h-6 overflow-x-clip truncate mt-1  ">
           {image.name}
       </div>
    </div>))}
